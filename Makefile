@@ -1,7 +1,7 @@
 default: start logs
 
-service:=ms-template-microservice
-project:=ms-workspace-demo
+service:=ms-reservations
+project:=msupandrunning
 
 .PHONY: start
 start:
@@ -24,7 +24,7 @@ logs:
 
 .PHONY: logs-db
 logs-db:
-	docker-compose -p ${project} logs -f ms-redis
+	docker-compose -p ${project} logs -f ms-reservations-redis
 
 .PHONY: logs-app
 logs-app:
@@ -33,7 +33,7 @@ logs-app:
 # connect to redis cli for debugging
 .PHONY: redis
 redis:
-	docker-compose -p ${project} exec ms-redis redis-cli -a 4n_ins3cure_P4ss
+	docker-compose -p ${project} exec ms-reservations-redis redis-cli -a 4n_ins3cure_P4ss
 
 # connect to the microservice cli for debugging
 .PHONY: shell
